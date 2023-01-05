@@ -1,19 +1,25 @@
 import pygame
 import math
+from functions import kill
+n = int(input("input n : "))
+k = int(input("input k : "))
 pygame.init()
 screen = pygame.display.set_mode((800,800))
 people = []
-
-for i in range(4):
+for i in range(n+1):
     people.append(pygame.image.load("small_spartan.png"))
-pygame.draw.circle(screen,(255,255,255), (360,360), 360)
-for i in range(4):
-    for j in range(4):
-        screen.blit(people[j],(360 +360 * math.cos(2*math.pi/4*j + 2*math.pi/360*i), 360 +360 * math.sin(2*math.pi/4*j + 2*math.pi/360*i)))
-    pygame.display.flip()
-    running = True
+# pygame.draw.circle(screen,(255,255,255), (360,360), 360)
+for i in range(1):
+    for j in range(n+1):
+        screen.blit(people[j],(260 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 260 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
+        pygame.display.flip()
+running = True
+# screen.blit(people[1],(260 +60 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 260 +60 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
+# kill(screen, 0,n)
+pygame.display.flip()
 while running:
     for event in pygame.event.get():
-        if event.type == quit:
+        if event.type == pygame.QUIT:
             running = False
-pygame.quit()
+            pygame.quit()
+            quit()
