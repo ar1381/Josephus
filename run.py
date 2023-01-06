@@ -8,12 +8,21 @@ k = int(input("input k : "))
 
 pygame.init()
 screen = pygame.display.set_mode((800,800))
+screen.fill((100,200,150))
 # pygame.draw.rect(screen, (100,200,150), pygame.Rect(0,0,800,800))
 pygame.display.flip()
+
+font = pygame.font.SysFont("Arial", 24)
+text = font.render("2", True, (255,0,0))
+text_rect = text.get_rect()
+text_rect.center = (100,100)
+screen.blit(text,text_rect)
+
 i = 1
 for j in range(n + 1):
     pygame.draw.circle(screen, (0,255,0) , (400 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 400 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)), 20)
-
+    text = font.render(str(j+1), True,(50,100,200))
+    screen.blit(text,(390 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 390 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
 
 # font = font.ren
 # from functions import kill
@@ -22,7 +31,7 @@ active = True
 
 def josephus(people, skip, screen, n):
     people_list = list(range(1, people + 1))
-    index = skip - 1
+    index = skip
     while len(people_list) > 1:
         o = people_list.pop(index)
         print("Person %d is killed" % o)
@@ -33,6 +42,7 @@ def josephus(people, skip, screen, n):
         index = (index + skip - 1) % len(people_list)
     print("The last survivor is Person %d" % people_list[0])
     active = False
+    time.sleep(6)
     pygame.quit()
     quit()
  
@@ -44,5 +54,4 @@ while active:
         if event.type == pygame.QUIT:
             active = False
     josephus(n, k, screen, n)
-    
     pygame.display.update()
