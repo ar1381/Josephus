@@ -11,7 +11,7 @@ for i in range(n+1):
 # pygame.draw.circle(screen,(255,255,255), (360,360), 360)
 for i in range(1):
     for j in range(n+1):
-        screen.blit(people[j],(260 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 260 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
+        screen.blit(people[j],(400 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 400 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
         pygame.display.flip()
 running = True
 # screen.blit(people[1],(260 +60 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 260 +60 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
