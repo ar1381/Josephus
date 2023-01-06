@@ -42,3 +42,10 @@ class CircularLinkedList:
 
         # Repeat the process
         self.traverse(k)
+def josephus(people, skip):
+    people_list = list(range(1, people + 1))
+    index = skip - 1
+    while len(people_list) > 1:
+        print("Person %d is killed" % people_list.pop(index))
+        index = (index + skip - 1) % len(people_list)
+    print("The last survivor is Person %d" % people_list[0])

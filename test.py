@@ -10,5 +10,3 @@ def josephus(people, skip, screen, n):
         index = (index + skip - 1) % len(people_list)
     print("The last survivor is Person %d" % people_list[0])
  
-# example
-# josephus(7, 3)
