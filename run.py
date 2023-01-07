@@ -12,13 +12,12 @@ screen.fill((100,200,150))
 pygame.display.flip()
 
 font = pygame.font.SysFont("Arial", 24)
-text = font.render("2", True, (255,0,0))
 
 i = 1
 for j in range(n + 1):
     pygame.draw.circle(screen, (0,255,0) , (400 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 400 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)), 20)
     text = font.render(str(j), True,(50,100,200))
-    screen.blit(text,(390 +260 * math.cos(2*math.pi/n*j + 2*math.pi/360*i), 390 +260 * math.sin(2*math.pi/n*j + 2*math.pi/360*i)))
+    screen.blit(text,(390 +260 * math.cos(2*math.pi/n*(j-1) + 2*math.pi/360*i), 390 +260 * math.sin(2*math.pi/n*(j-1) + 2*math.pi/360*i)))
 
 active = True
 
@@ -28,7 +27,7 @@ def josephus(people, skip, screen, n):
     while len(people_list) > 1:
         o = people_list.pop(index)
         print("Person %d is killed" % o)
-        print(str(o)+"\n")
+        # print(str(o)+"\n")
         kill(screen,o-1,n)
         pygame.display.flip()
         time.sleep(3)
